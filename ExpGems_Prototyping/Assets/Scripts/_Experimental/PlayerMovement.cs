@@ -2,16 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerMovement : ChildBehaviour {
 
+    public delegate Vector2 MoveFunction();
     Rigidbody2D rig2;
-
-    delegate Vector2 MoveFunction();
     MoveFunction moveFun;
-    
-    // default behaviour
-    Vector2 wasdLastVec;
+    float lastPressedX, lastPressedY;
+
+    float facingDirectionX = 1;
+    float facingDirectionY = 1;
+
+    // in which direction last move pointed.
+    public Vector2 LastDirection { get { return new Vector2(facingDirectionX, facingDirectionY); } }
+
+    // where the sprite should be directioned.
+    public float FacingDirectionX { get => facingDirectionX; set => facingDirectionX = value; }
+    public float FacingDirectionY { get => facingDirectionY; set => facingDirectionY = value; }
 
     float speed;
 
@@ -20,47 +26,34 @@ public class PlayerMovement : ChildBehaviour {
         base.InternalInit();
 
         rig2 = GetRigidbody2D();
-
-        // init default behaviour
-        moveFun = WASDMove;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (moveFun != null)
+        { 
             Move(moveFun.Invoke());
+        }
     }
 
     private void Move(Vector2 dir)
     {
+
+        rig2.transform.localScale = new Vector3(facingDirectionX != 0 ? facingDirectionX : 1, rig2.transform.localScale.y, rig2.transform.localScale.z);
+
         rig2.MovePosition(rig2.position + dir*Time.fixedDeltaTime * speed);
+
     }
 
-    Vector2 WASDMove()
-    {
-        if (Input.GetKey(KeyCode.W))
-            wasdLastVec.y = 1f;
-        if (Input.GetKey(KeyCode.D))
-            wasdLastVec.x = 1f;
-        if (Input.GetKey(KeyCode.A))
-            wasdLastVec.x = -1;
-        if (Input.GetKey(KeyCode.S))
-            wasdLastVec.y = -1;
-
-        if (Input.GetKeyUp(KeyCode.W))
-            wasdLastVec.y = 0;
-        if (Input.GetKeyUp(KeyCode.D))
-            wasdLastVec.x = 0;
-        if (Input.GetKeyUp(KeyCode.A))
-            wasdLastVec.x = 0;
-        if (Input.GetKeyUp(KeyCode.S))
-            wasdLastVec.y = 0;
-        return wasdLastVec;
-    }
 
     internal void SetSpeed(Stat speed)
     {
-        this.speed = speed.GetFloat();
+        this.speed = Stat.GetFloat(speed);
+    }
+
+    internal void SetFunction(PlayerMovement.MoveFunction fun)
+    {
+        moveFun = fun;
     }
 }
