@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dd39e208da090540848f79f30cc5282, type: 3}
-  m_Name: MeleeAttackRange
+  m_Name: DeathGem
   m_EditorClassIdentifier: 
-  statName: AttackRangeBasic
-  tag: Range
-  fnum: 3
-  num: 3
+  statName: 
+  tag: 
+  fnum: 0
+  num: 0
   tf: 0

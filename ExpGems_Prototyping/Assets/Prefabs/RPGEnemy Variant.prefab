@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7447599713996168062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4983714082416995963}
+  - component: {fileID: 2807306049334571889}
+  m_Layer: 0
+  m_Name: ExpGain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4983714082416995963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447599713996168062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6169966596296054740}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2807306049334571889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447599713996168062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775639367572e8b48a84dfb21467793a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useParentAsRoot: 1
+  useRigidbody: 0
+  gemExpDrop: 1
 --- !u!1001 &3015661027585653203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,16 +113,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPGEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8969438004959243782, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969438004396615501, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8969438004396615501, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
       propertyPath: m_Color.g
@@ -87,26 +123,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8969438005007691873, guid: 682ddc617a9765349ac98a4bb4189edb,
+    - target: {fileID: 8709808291267006620, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
-      propertyPath: stats.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969438005007691873, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: stats.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: e863c9405fac58a4abb1d31f294a0ba1,
-        type: 2}
-    - target: {fileID: 8969438005007691873, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: stats.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: cd3e6c16919a9be4ba33fb3daeb6268d,
-        type: 2}
-    - target: {fileID: 1647723413, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+--- !u!4 &6169966596296054740 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8969438004959243783, guid: 682ddc617a9765349ac98a4bb4189edb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3015661027585653203}
+  m_PrefabAsset: {fileID: 0}

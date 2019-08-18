@@ -4,11 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stat", menuName = "Stats/NewStat", order = 1)]
 public class Stat:ScriptableObject {
 
-    public string statName;
-    public string tag;
+    [SerializeField] public string statName;
+    [SerializeField] public string tag;
     protected object value;
-    [SerializeField] protected float num;
+    [SerializeField] protected float fnum;
+    [SerializeField] protected int num;
     [SerializeField] protected bool tf;
+
 
     public object GetValue()
     {
@@ -22,7 +24,7 @@ public class Stat:ScriptableObject {
     public static float GetFloat(Stat stat)
     {
         if (stat != null)
-            return stat.num;
+            return stat.fnum;
         Debug.Log("Stat isn't assigned.");
         return 0f;
     }
@@ -33,6 +35,21 @@ public class Stat:ScriptableObject {
             return (int)stat.num;
         Debug.Log("Stat isn't assigned.");
         return 0;
+    }
+
+    internal static object GetValue(Stat stat)
+    {
+        return stat.value;
+    }
+
+    internal static string GetTag(Stat stat)
+    {
+        return stat.tag;
+    }
+
+    internal static string GetName(Stat stat)
+    {
+        return stat.statName;
     }
 
     public static bool GetBool(Stat stat)

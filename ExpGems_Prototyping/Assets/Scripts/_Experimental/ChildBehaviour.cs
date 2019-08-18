@@ -11,7 +11,7 @@ public abstract class ChildBehaviour:MonoBehaviour {
     public bool UseParentAsRoot { get { return useParentAsRoot; } }
     public Transform RootObj { get { return usingObj; } }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         gParent = transform.parent;
 
@@ -54,5 +54,11 @@ public abstract class ChildBehaviour:MonoBehaviour {
     {
         ParentBehaviour pb = usingObj.GetComponent<ParentBehaviour>();
         return pb.Stats;
+    }
+
+    protected UnitKill GetUnitKill()
+    {
+        ParentBehaviour pb = usingObj.GetComponent<ParentBehaviour>();
+        return pb.UnitKill;
     }
 }

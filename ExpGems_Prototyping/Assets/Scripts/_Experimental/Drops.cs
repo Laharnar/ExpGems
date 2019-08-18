@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drops : MonoBehaviour
+public class Drops : ChildBehaviour
 {
+    public int gemExpDrop;
+
+    UnitKill onDeath;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        onDeath = GetUnitKill();
+        onDeath.AfterKillDo(DropForPlayer);
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator DropForPlayer()
     {
-        
+        QuickLog.Msg("Dropping", gemExpDrop);
+        Gems.TriggerExpGain(0, gemExpDrop);
+        yield break;
     }
 }

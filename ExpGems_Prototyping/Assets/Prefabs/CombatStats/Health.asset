@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: Health points
   tag: Health
-  num: 10
+  fnum: 0
+  num: 100
   tf: 0

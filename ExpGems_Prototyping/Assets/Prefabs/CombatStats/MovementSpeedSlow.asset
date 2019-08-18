@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: Slow movement
   tag: Speed
+  fnum: 10
   num: 10
   tf: 0

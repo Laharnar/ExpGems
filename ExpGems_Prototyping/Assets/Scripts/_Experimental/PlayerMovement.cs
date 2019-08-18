@@ -7,7 +7,6 @@ public class PlayerMovement : ChildBehaviour {
     public delegate Vector2 MoveFunction();
     Rigidbody2D rig2;
     MoveFunction moveFun;
-    float lastPressedX, lastPressedY;
 
     float facingDirectionX = 1;
     float facingDirectionY = 1;
@@ -39,17 +38,18 @@ public class PlayerMovement : ChildBehaviour {
 
     private void Move(Vector2 dir)
     {
-
         rig2.transform.localScale = new Vector3(facingDirectionX != 0 ? facingDirectionX : 1, rig2.transform.localScale.y, rig2.transform.localScale.z);
 
         rig2.MovePosition(rig2.position + dir*Time.fixedDeltaTime * speed);
-
     }
-
 
     internal void SetSpeed(Stat speed)
     {
         this.speed = Stat.GetFloat(speed);
+        if (this.speed == 0)
+        {
+            QuickLog.Msg("Speed is 0. Assign it in prefabs.");
+        }
     }
 
     internal void SetFunction(PlayerMovement.MoveFunction fun)

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: BasicAttack
   tag: Damage
+  fnum: 0
   num: 10
   tf: 0

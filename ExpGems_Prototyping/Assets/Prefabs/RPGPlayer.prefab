@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8969438004959243776}
   - component: {fileID: 1647723413}
   - component: {fileID: 4129122774439708571}
+  - component: {fileID: 3547356970925630147}
   m_Layer: 0
   m_Name: RPGPlayer
   m_TagString: Untagged
@@ -256,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig2dParent: {fileID: 8969438004959243777}
   stats: {fileID: 8969438005007691873}
+  unitKill: {fileID: 0}
 --- !u!114 &1647723413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useParentAsRoot: 0
   useRigidbody: 0
+--- !u!114 &3547356970925630147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8969438004959243780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37f79c912335594589be6004ef3d9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useParentAsRoot: 0
+  useRigidbody: 0
+  gemExperienceData: []
 --- !u!1 &8969438004981199312
 GameObject:
   m_ObjectHideFlags: 0
