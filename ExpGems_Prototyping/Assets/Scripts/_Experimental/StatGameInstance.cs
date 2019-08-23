@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [System.Serializable]
 public class StatGameInstance {
@@ -28,5 +29,15 @@ public class StatGameInstance {
     internal static void AddInt(StatGameInstance stat, int amount)
     {
         stat.num += amount;
+    }
+
+    internal int GetInt()
+    {
+        return num;
+    }
+
+    internal void SetInt(int expLeft)
+    {
+        num = expLeft;
     }
 }

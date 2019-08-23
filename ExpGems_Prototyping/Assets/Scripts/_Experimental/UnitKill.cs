@@ -15,11 +15,6 @@ public class UnitKill : MonoBehaviour {
         instance = this;
     }
 
-    private void Start()
-    {
-
-    }
-
     public static void KillUnit(PlayerStats unit)
     {
         instance.StartCoroutine(instance.CKillUnit(unit));

@@ -55,8 +55,11 @@ public class PlayerCombat : ChildBehaviour
 
                 lastRoot = c.RootObj;
 
-                // do damage.
+                // do damage and apply all effects.
                 c.GetStats().DoDamage(dmgItemTest);
+                Gems.TriggerExpGainOnAttack();
+
+
                 QuickLog.Msg(name, "- Damage", Stat.GetInt(dmgItemTest), "- >", hit.transform.name);
             }
                

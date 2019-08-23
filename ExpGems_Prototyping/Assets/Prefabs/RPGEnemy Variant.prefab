@@ -123,12 +123,13 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8709808291267006620, guid: 682ddc617a9765349ac98a4bb4189edb,
+    - target: {fileID: 8969438005007691873, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 6
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
 --- !u!4 &6169966596296054740 stripped
 Transform:
