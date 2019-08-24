@@ -12,34 +12,56 @@ public class PlayerMotor : ChildBehaviour {
         player.SetFunction(WASDMove);
     }
 
-    Vector2 WASDMove()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            wasdLastVec.y = 1f;
-            player.FacingDirectionY = wasdLastVec.y;
-            player.FacingDirectionX = 0;
+            wasdLastVec.y += 1f;
+            if (wasdLastVec.y != 0)
+            {
+                player.FacingDirectionY = wasdLastVec.y;
+                player.FacingDirectionX = 0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            wasdLastVec.x = 1f;
-            player.FacingDirectionX = wasdLastVec.x;
-            player.FacingDirectionY = 0;
+            wasdLastVec.x += 1f;
+            if (wasdLastVec.x != 0)
+            {
+                player.FacingDirectionX = wasdLastVec.x;
+                player.FacingDirectionY = 0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            wasdLastVec.x = -1;
-            player.FacingDirectionX = wasdLastVec.x;
-            player.FacingDirectionY = 0;
+            wasdLastVec.x -= 1;
+            if (wasdLastVec.x != 0)
+            {
+                player.FacingDirectionX = wasdLastVec.x;
+                player.FacingDirectionY = 0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            wasdLastVec.y = -1;
-            player.FacingDirectionY = wasdLastVec.y;
-            player.FacingDirectionX = 0;
+            wasdLastVec.y -= 1;
+            if (wasdLastVec.y != 0)
+            {
+                player.FacingDirectionY = wasdLastVec.y;
+                player.FacingDirectionX = 0;
+            }
         }
 
+        if (Input.GetKeyUp(KeyCode.W))
+            wasdLastVec.y -= 1;
+        if (Input.GetKeyUp(KeyCode.D))
+            wasdLastVec.x -= 1;
+        if (Input.GetKeyUp(KeyCode.A))
+            wasdLastVec.x += 1;
+        if (Input.GetKeyUp(KeyCode.S))
+            wasdLastVec.y += 1;
 
+
+        /*
         if (Input.GetKeyUp(KeyCode.W))
             wasdLastVec.y = 0;
         if (Input.GetKeyUp(KeyCode.D))
@@ -47,8 +69,13 @@ public class PlayerMotor : ChildBehaviour {
         if (Input.GetKeyUp(KeyCode.A))
             wasdLastVec.x = 0;
         if (Input.GetKeyUp(KeyCode.S))
-            wasdLastVec.y = 0;
+            wasdLastVec.y = 0;*/
 
+    }
+
+    Vector2 WASDMove()
+    {
+        
         return wasdLastVec;
     }
 }
