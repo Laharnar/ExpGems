@@ -261,6 +261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37f79c912335594589be6004ef3d9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemPlayerExp:
+    attributeData: {fileID: 11400000, guid: 357b852c21b1f3d42b8aa6b78e66fdd3, type: 2}
+    expInstance:
+      maxExpForThisLevel: 10
+      currentLevel: 1
+      currentExp: 0
   gemExperienceData:
   - {fileID: 11400000, guid: 9b31abb6ce103f6428b648ed497fdc45, type: 2}
   - {fileID: 11400000, guid: ee31939142876dd41962460c9ffb62a7, type: 2}
@@ -322,16 +328,16 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: -0.0000038146973
-      inSlope: -0.063660026
-      outSlope: -0.063660026
+      inSlope: -0.3112385
+      outSlope: -0.3112385
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.39277107
+      inWeight: 0.12048191
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxLevelX: 80
+  maxLevelX: 30
   maxGlobalExpLimit: 1000000
   maxExpForThisLevel: 10
   currentLevel: 1
@@ -426,7 +432,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2049203111}
-  - component: {fileID: 2049203112}
   m_Layer: 0
   m_Name: Combat
   m_TagString: Untagged
@@ -450,18 +455,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2049203112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049203110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1226c15a5d85ba4429d2a7cc563c7628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3015661027471943647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,7 +526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unitKill
       value: 
-      objectReference: {fileID: 2049203112}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbefb76e67214d944843f8208b52a0d0, type: 3}
 --- !u!1001 &8969438004632066021
@@ -607,7 +600,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unitKill
       value: 
-      objectReference: {fileID: 2049203112}
+      objectReference: {fileID: 0}
     - target: {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
       propertyPath: gemExperience.Array.size

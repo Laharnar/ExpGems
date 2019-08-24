@@ -3,14 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gems : MonoBehaviour
-{
+[System.Serializable]
+class GemV2 {
+    // intial setup
+    [SerializeField] ExperienceAttribute attributeData;
+
+    // instance
+    [SerializeField] ExperienceAttributeInstance expInstance;
+
+    public void Init()
+    {
+        expInstance = ExperienceAttributeInstance.New(attributeData);
+    }
+
+    int ApplyLevelingFormula(int amount)
+    {
+        int currentLevel = expInstance.CurrentLevel;
+        float lowerLimit = 1f + amount * 0.9f;
+        float upperLimit = 1f + amount * 1.1f * (1f + currentLevel / 100);
+        return (int)UnityEngine.Random.Range(lowerLimit, upperLimit);
+    }
+
+    public void RecieveExp(int amount)
+    {
+        amount = ApplyLevelingFormula(amount);
+        Debug.Log("Recieved exp: " + amount);
+        expInstance.GainExp(amount, attributeData);
+    }
+
+}
+
+public class Gems : MonoBehaviour {
     static Gems instance;
 
     // intial setup
+    [SerializeField] GemV2 gemPlayerExp;
+
     [SerializeField] Stat[] gemExperienceData;
 
-    // instance
     [SerializeField] StatGameInstance[] experienceInstance;
 
     [SerializeField] AnimationCurve expLimit;
@@ -26,38 +56,44 @@ public class Gems : MonoBehaviour
     {
         instance = this;
 
+        // init new
+        gemPlayerExp.Init();
+
+        // init old
         experienceInstance = new StatGameInstance[gemExperienceData.Length];
         for (int i = 0; i < gemExperienceData.Length; i++)
         {
-
             experienceInstance[i] = new StatGameInstance(gemExperienceData[i]);
         }
-        
-    }
-
-    public static void TriggerExpGain(int gemType, int amount)
-    {
-        instance.RecieveExp(gemType, instance.ApplyLevelingFormula(amount));
     }
 
     int ApplyLevelingFormula(int amount)
     {
-        return (int)UnityEngine.Random.Range(1f+amount*0.9f, 1f+amount*1.1f * (1f+currentLevel/100));
-        
+        int currentLevel = this.currentLevel;
+        float lowerLimit = 1f + amount * 0.9f;
+        float upperLimit = 1f + amount * 1.1f * (1f + currentLevel / 100);
+        return (int)UnityEngine.Random.Range(lowerLimit, upperLimit);
     }
+
+
 
     public void RecieveExp(int gemType, int amount)
     {
-        Debug.Log("Recieved exp: "+amount);
         if (gemType < experienceInstance.Length)
         {
+            Debug.Log("Recieved exp: " + amount);
             StatGameInstance.AddInt(experienceInstance[gemType], amount);
             currentExp += amount;
+        }
+        else
+        {
+            Debug.Log("EXP ERROR: out of range." + gemType + " " + experienceInstance.Length, this);
         }
 
         if (experienceInstance[gemType].GetInt() >= maxExpForThisLevel)
         {
             currentLevel++;
+            Debug.Log("Level up! to level " + currentLevel);
 
             // Add leftover exp to new level.
             int expLeft = experienceInstance[gemType].GetInt() - maxExpForThisLevel;
@@ -70,15 +106,29 @@ public class Gems : MonoBehaviour
             float sample = expIncreasePercentage.Evaluate(percentage);
             //float multiplier = Mathf.Max((int)(sample * maxGlobalExpLimit), 1);
             float multiplier = 1;
-            int newMaxExp = (int)(maxExpForThisLevel * (1+ sample));
+            int newMaxExp = (int)(maxExpForThisLevel * (1 + sample));
             maxExpForThisLevel = newMaxExp;
             Debug.Log("percentage : " + percentage + "curve result: " + sample + " multiplier: " + multiplier + " -> " + newMaxExp);
 
         }
     }
 
-    internal static void TriggerExpGainOnAttack()
+    internal static void GetExpOnAttack()
     {
-        TriggerExpGain(1, 1);
+        GetSomeExp(1, 1);
     }
+
+    internal static void GetSomeExp(int gemType, int amount)
+    {
+        if (gemType == 0)
+        {
+            instance.gemPlayerExp.RecieveExp(amount);
+        }
+        else
+        {
+            amount = instance.ApplyLevelingFormula(amount);
+            instance.RecieveExp(gemType, amount);
+        }
+    }
+
 }

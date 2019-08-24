@@ -57,7 +57,7 @@ public class PlayerCombat : ChildBehaviour
 
                 // do damage and apply all effects.
                 c.GetStats().DoDamage(dmgItemTest);
-                Gems.TriggerExpGainOnAttack();
+                Gems.GetExpOnAttack();
 
 
                 QuickLog.Msg(name, "- Damage", Stat.GetInt(dmgItemTest), "- >", hit.transform.name);
@@ -68,11 +68,12 @@ public class PlayerCombat : ChildBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Application.isPlaying)
+        if (Application.isPlaying && isInit)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(RootObj.position, boxArea);
-            Gizmos.DrawWireCube(RootObj.position+ (Vector3)movement.LastDirection, boxArea);
+            if(movement != null)
+                Gizmos.DrawWireCube(RootObj.position+ (Vector3)movement.LastDirection, boxArea);
         }
     }
 }

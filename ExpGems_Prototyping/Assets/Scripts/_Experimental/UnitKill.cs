@@ -3,21 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitKill : MonoBehaviour {
-    static UnitKill instance;
+public class UnitKill:MonoBehaviour {
 
     public delegate IEnumerator AfterUnitDeath();
     List<AfterUnitDeath> afterDeath = new List<AfterUnitDeath>();
 
-
-    private void Awake()
+    public void KillUnit(PlayerStats unit)
     {
-        instance = this;
-    }
-
-    public static void KillUnit(PlayerStats unit)
-    {
-        instance.StartCoroutine(instance.CKillUnit(unit));
+        StartCoroutine(CKillUnit(unit));
     }
 
     internal void AfterKillDo(AfterUnitDeath fun)
@@ -31,9 +24,9 @@ public class UnitKill : MonoBehaviour {
         Destroy(unit.UseParentAsRoot ? unit.transform.parent.gameObject : unit.gameObject);
 
         // activate the rest of after death stuff... ui, drops, etc.
+        QuickLog.Msg("Triggering after death. times:"+afterDeath.Count);
         for (int i = 0; i < afterDeath.Count; i++)
         {
-            QuickLog.Msg("Triggering after death.");
             yield return StartCoroutine(afterDeath[i]());
         }
 

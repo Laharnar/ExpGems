@@ -20,7 +20,7 @@ public class PlayerStats : ChildBehaviour {
 
         if (health <= 0)
         {
-            UnitKill.KillUnit(this);
+            GetUnitKill().KillUnit(this);
         }
     }
 

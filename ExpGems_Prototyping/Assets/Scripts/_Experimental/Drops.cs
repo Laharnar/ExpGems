@@ -19,7 +19,7 @@ public class Drops : ChildBehaviour
     IEnumerator DropForPlayer()
     {
         QuickLog.Msg("Dropping", gemExpDrop);
-        Gems.TriggerExpGain(0, gemExpDrop);
+        Gems.GetSomeExp(0, gemExpDrop);
         yield break;
     }
 }

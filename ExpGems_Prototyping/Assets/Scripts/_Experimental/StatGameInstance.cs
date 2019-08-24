@@ -26,6 +26,11 @@ public class StatGameInstance {
         this.tf = Stat.GetBool(stat);
     }
 
+    internal void AddInt(int value)
+    {
+        num += value;
+    }
+
     internal static void AddInt(StatGameInstance stat, int amount)
     {
         stat.num += amount;

@@ -10,6 +10,7 @@ public abstract class ChildBehaviour:MonoBehaviour {
 
     public bool UseParentAsRoot { get { return useParentAsRoot; } }
     public Transform RootObj { get { return usingObj; } }
+    protected bool isInit = false;
 
     protected virtual void Awake()
     {
@@ -36,6 +37,8 @@ public abstract class ChildBehaviour:MonoBehaviour {
         {
             usingObj = transform;
         }
+        isInit = true;
+
     }
 
     protected Rigidbody2D GetRigidbody2D()
