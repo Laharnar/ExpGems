@@ -10,11 +10,18 @@ public class ParentBehaviour : MonoBehaviour {
     [SerializeField] UnitKill unitKill;
     public UnitKill UnitKill { get => unitKill; }
 
+    [SerializeField] CharacterAnimator characterAnimations;
+    public CharacterAnimator CharacterAnimations { get => characterAnimations; }
+
     private void Awake()
     {
         if (unitKill == null)
         {
-            unitKill = GameObject.FindObjectOfType<UnitKill>();
+            unitKill = gameObject.GetComponentInChildren<UnitKill>();
+        }
+        if (characterAnimations == null)
+        {
+            characterAnimations = gameObject.GetComponentInChildren<CharacterAnimator>();
         }
     }
 }

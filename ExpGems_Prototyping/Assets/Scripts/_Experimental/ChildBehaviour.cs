@@ -64,4 +64,10 @@ public abstract class ChildBehaviour:MonoBehaviour {
         ParentBehaviour pb = usingObj.GetComponent<ParentBehaviour>();
         return pb.UnitKill;
     }
+
+    protected CharacterAnimator GetAnimations()
+    {
+        ParentBehaviour pb = usingObj.GetComponent<ParentBehaviour>();
+        return pb.CharacterAnimations;
+    }
 }

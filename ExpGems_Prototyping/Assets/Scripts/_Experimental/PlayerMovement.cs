@@ -20,11 +20,18 @@ public class PlayerMovement : ChildBehaviour {
 
     float speed;
 
+    CharacterAnimator animations;
+
     protected override void InternalInit()
     {
         base.InternalInit();
 
         rig2 = GetRigidbody2D();
+    }
+
+    protected void Start()
+    {
+        animations = GetAnimations();
     }
 
     // Update is called once per frame
@@ -38,6 +45,16 @@ public class PlayerMovement : ChildBehaviour {
 
     private void Move(Vector2 dir)
     {
+        if (animations != null)
+        {
+            animations.ActivateBool("Walk", dir != Vector2.zero);
+            bool pausedFromAttack = animations.animationPlaying;
+            if (pausedFromAttack)
+            {
+                return;
+            }
+        }
+
         rig2.transform.localScale = new Vector3(facingDirectionX != 0 ? facingDirectionX : 1, rig2.transform.localScale.y, rig2.transform.localScale.z);
 
         rig2.MovePosition(rig2.position + dir*Time.fixedDeltaTime * speed);

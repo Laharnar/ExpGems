@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 8969438004959243780, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
       propertyPath: m_Name
-      value: RPGEnemy Variant
+      value: RPGEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1647723413, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
       propertyPath: m_Enabled
@@ -175,8 +175,19 @@ PrefabInstance:
       propertyPath: health
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+    - target: {fileID: 1365380550, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959213854, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959213855, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
 --- !u!4 &6169966596296054740 stripped
 Transform:

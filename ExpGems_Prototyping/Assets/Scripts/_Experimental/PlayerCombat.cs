@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,18 +17,25 @@ public class PlayerCombat : ChildBehaviour
 
     Stack<RaycastHit2D> attacking;
 
+    CharacterAnimator animations;
+    public bool NotAttacking { get { return animations == null || !animations.animationPlaying; } }
+
     // Start is called before the first frame update
     void Start()
     {
+        animations = GetAnimations();
         movement = GetPlayerMovement();
         attacking = new Stack<RaycastHit2D>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && NotAttacking)
         {
+            TriggerAttackAnimations();
+
             // RPG combat v 1 --> raycasting based.
             RaycastHit2D[] hits = Physics2D.BoxCastAll(RootObj.position, boxArea, 0, movement.LastDirection * Stat.GetFloat(atkDistanceTest));
 
@@ -75,5 +83,11 @@ public class PlayerCombat : ChildBehaviour
             if(movement != null)
                 Gizmos.DrawWireCube(RootObj.position+ (Vector3)movement.LastDirection, boxArea);
         }
+    }
+
+    void TriggerAttackAnimations()
+    {
+        Debug.Log(animations);
+        animations.ActivateTrigger("Attack");
     }
 }

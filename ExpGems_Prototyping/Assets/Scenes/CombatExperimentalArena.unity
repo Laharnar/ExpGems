@@ -186,7 +186,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.68
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1015052770}
   onAxisZ: 0
-  followPower: 0.604
-  followMultiplier: 7.32
+  followPower: 0.41
+  followMultiplier: 7.86
 --- !u!1 &1329962962
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,26 +403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1365380548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8969438004346362791, guid: 682ddc617a9765349ac98a4bb4189edb,
-    type: 3}
-  m_PrefabInstance: {fileID: 8969438004632066021}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1365380550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365380548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17016b780667c7440938762699603d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useParentAsRoot: 1
-  useRigidbody: 0
 --- !u!1 &2049203110
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,11 +502,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPGEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6169966596296054739, guid: fbefb76e67214d944843f8208b52a0d0,
-        type: 3}
-      propertyPath: unitKill
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbefb76e67214d944843f8208b52a0d0, type: 3}
 --- !u!1001 &8969438004632066021
@@ -598,31 +573,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8969438004959243776, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
+      propertyPath: characterAnimations
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969438004959243776, guid: 682ddc617a9765349ac98a4bb4189edb,
+        type: 3}
       propertyPath: unitKill
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb,
+    - target: {fileID: 8969438004396615501, guid: 682ddc617a9765349ac98a4bb4189edb,
         type: 3}
-      propertyPath: gemExperience.Array.size
-      value: 1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: gemExperienceData.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: gemExperienceData.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9b31abb6ce103f6428b648ed497fdc45,
-        type: 2}
-    - target: {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb,
-        type: 3}
-      propertyPath: gemExperienceData.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: ee31939142876dd41962460c9ffb62a7,
-        type: 2}
-    m_RemovedComponents:
-    - {fileID: 3547356970925630147, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 682ddc617a9765349ac98a4bb4189edb, type: 3}
